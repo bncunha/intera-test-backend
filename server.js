@@ -47,6 +47,6 @@ app.get('/teste', function (req, res) {
   res.send('Teste')
 });
 
-app.listen(9000, () => {
+app.listen(process.env.PORT || 9000, () => {
   console.log('Listen');
 });
