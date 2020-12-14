@@ -10,9 +10,8 @@ app.use(express.json());
 
 app.post('/linkedin/accessToken', async (req, res) => {
   const REDIRECT_URL = req.body.redirect;
-
   try {
-    console.log('Get linkedin token:', req.body.code);
+    console.log('Get linkedin token:', req.body.code, process.env.CLIENT_ID);
     const response = await Axios.post(`https://www.linkedin.com/oauth/v2/accessToken?${new URLSearchParams({
       grant_type: 'authorization_code',
       code: req.body.code,
@@ -23,7 +22,7 @@ app.post('/linkedin/accessToken', async (req, res) => {
     console.log(response.data);
     res.json(response.data);
   } catch(err) {
-    console.log(err);
+    console.log(err.data);
     res.status(500).send('Erro ao recuprerar o token');
   }
 })
@@ -38,7 +37,7 @@ app.get('/linkedin/user', async (req, res) => {
     console.log(response.data);
     res.json(response.data);
   } catch(err) {
-    console.log(err);
+    console.log(err.data);
     res.status(500).send('Erro ao recuprerar o usuário');
   }
 })
