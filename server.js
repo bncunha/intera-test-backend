@@ -4,7 +4,7 @@ const app = express();
 const Axios = require('axios')
 const cookieParser = require('cookie-parser')
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
