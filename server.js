@@ -17,8 +17,8 @@ app.post('/linkedin/accessToken', async (req, res) => {
       grant_type: 'authorization_code',
       code: req.body.code,
       redirect_uri: REDIRECT_URL,
-      client_id: node.process.CLIENT_ID,
-      client_secret: node.process.CLIENT_SECRET,
+      client_id: process.env.CLIENT_ID,
+      client_secret: process.env.CLIENT_SECRET,
     }).toString()}`);
     console.log(response.data);
     res.json(response.data);
