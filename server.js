@@ -31,7 +31,7 @@ app.get('/linkedin/user', async (req, res) => {
   try {
     const response = await Axios.get('https://api.linkedin.com/v2/me?projection=(id,firstName,lastName,profilePicture(displayImage~:playableStreams))', {
       headers: {
-        'Authorization': 'Bearer ' + req.cookies.token
+        'Authorization': req.headers.authorization
       }
     })
     console.log(response.data);
